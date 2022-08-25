@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% block title %}Laptop{% endblock title %}
+{% block laptopA %}active{% endblock laptopA %}
+{% block laptop %}<span class="sr-only">(current)</span>{% endblock laptop %}
+
+{% block main %}
+<div class="container my-4 border rounded p-4 bg-light">
+        <h1 class="text-danger " style="font-family:  sans-serif,'Prompt';">
+                <strong>Pricer Filter</strong>
+        </h1>
+        <p class="text-muted" style="font-family: 'Prompt', sans-serif;">Enter laptop details to get price prediction.
+        </p>
+        <hr>
+        <form method="post" action="/laptop_filter">
+                <div class="px-4">
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                        <label for="Company">Company</label>
+                                        <select id="Company" class="form-control" name="Company">
+                                                <option selected></option>
+                                                {% for com in data['Company'] %}
+                                                <option>{{ com }}</option>
+                                                {% endfor %}
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                        <label for="TypeName">Type Name</label>
+                                        <select class="form-control" id="TypeName" name="TypeName">
+                                                <option selected></option>
+                                                {% for com in data['TypeName'] %}
+                                                <option>{{ com }}</option>
+                                                {% endfor %}
+                                        </select>
+                                </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="form-group col-md-4">
+                                        <label for="ScreenResolution">Screen Resolution</label>
+                                        <select id="ScreenResolution" class="form-control" name="ScreenResolution">
+                                                <option selected></option>
+                                                {% for com in data['ScreenResolution'] %}
+                                                <option>{{ com }}</option>
+                                                {% endfor %}
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                        <label for="Cpu">CPU</label>
+                                        <select class="form-control" id="Cpu" name="Cpu">
+                                                <option selected></option>
+                                                {% for com in data['Cpu'] %}
+                                                <option>{{ com }}</option>
+                                                {% endfor %}
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                        <label for="Ram">RAM</label>
+                                        <select class="form-control" id="Ram" name="Ram">
+                                                <option selected></option>
+                                                {% for com in data['Ram'] %}
+                                                <option>{{ com }} GB</option>
+                                                {% endfor %}
+                                        </select>
+                                </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="form-group col-md-4">
+                                        <label for="Gpu">GPU</label>
+                                        <select id="Gpu" class="form-control" name="Gpu">
+                                                <option selected></option>
+                                                {% for com in data['Gpu'] %}
+                                                <option>{{ com }}</option>
+                                                {% endfor %}
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                        <label for="OpSys">Operating System</label>
+                                        <select class="form-control" id="OpSys" name="OpSys">
+                                                <option selected></option>
+                                                {% for com in data['OpSys'] %}
+                                                <option>{{ com }}</option>
+                                                {% endfor %}
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                        <label for="Weight">Weight</label>
+                                        <input type="text" class="form-control" id="Weight" placeholder="Weight in KG"
+                                                name="Weight">
+                                </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                        <label for="Resolution">Resolution</label>
+                                        <select class="form-control" id="Resolution" name="Resolution">
+                                                <option selected></option>
+                                                {% for com in data['Resolution'] %}
+                                                <option>{{ com }}</option>
+                                                {% endfor %}
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                        <label for="CpuFreq">CPU Frequency</label>
+                                        <input type="text" class="form-control" id="CpuFreq" name="CpuFreq"
+                                                placeholder="Enter frequency">
+                                        </div>
+                        </div>
+                        <div class="form-row text-primary"> </div>
+                        <div class="form-row">
+                                <div class="form-group col-md-3">
+                                        <label for="SSD">SSD</label>
+                                        <select id="SSD" class="form-control" name="SSD">
+                                                <option selected></option>
+                                                {% for com in data['SSD'] %}
+                                                <option>{{ com }} GB</option>
+                                                {% endfor %}
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                        <label for="HDD">HDD</label>
+                                        <select id="HDD" class="form-control" name="HDD">
+                                                <option selected></option>
+                                                {% for com in data['HDD'] %}
+                                                <option>{{ com }} GB</option>
+                                                {% endfor %}
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                        <label for="Flash Storage">Flash Storage</label>
+                                        <select id="Flash Storage" class="form-control" name="Flash Storage">
+                                                <option selected></option>
+                                                {% for com in data['Flash Storage'] %}
+                                                <option>{{ com }} GB</option>
+                                                {% endfor %}
+                                                <option>None</option>
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                        <label for="Hybrid">Hybrid</label>
+                                        <select id="Hybrid" class="form-control" name="Hybrid">
+                                                <option selected></option>
+                                                {% for com in data['Hybrid'] %}
+                                                <option>{{ com }} GB</option>
+                                                {% endfor %}
+                                        </select>
+                                </div>
+                        </div>
+
+                        <div class="form-row my-2">
+                                <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="Touchscreen" name="Touchscreen">
+                                        <label class="custom-control-label" for="Touchscreen">Touch Screen</label>
+                                </div>
+                        </div>
+                        <div class="form-row my-2">
+                                <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="IPS Panel" name="IPS Panel">
+                                        <label class="custom-control-label" for="IPS Panel">IPS Panel</label>
+                                </div>
+                        </div>
+                </div>
+                <hr>
+                <div style='text-align: center;'>
+                        <a href="/laptop" class="btn btn-outline-danger">Clear</a> &nbsp;
+                        <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+        </form>
+</div>
+{% endblock main %}
